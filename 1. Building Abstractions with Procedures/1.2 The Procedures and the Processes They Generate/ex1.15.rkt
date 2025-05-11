@@ -2,10 +2,12 @@
 
 (define (cube x) (* x x x))
 (define (p x) (- (* 3 x) (* 4 (cube x))))
-(define (sine angle)
+
+(define (sine angle step)
+   (display step) (display ": ") (display angle) (newline)
    (if (not (> (abs angle) 0.1))
        angle
-       (p (sine (/ angle 3.0)))))
+       (p (sine (/ angle 3.0) (+ step 1)))))
 
 ;1. How many times is the procedure p applied when (sine 12.15) is evaluated?
 ;2. What is the order of growth in space and number of steps (as a function of a) 
