@@ -6,9 +6,14 @@
 ; perimeter = 2 * (L + W)
 ; area = L * W
 
-(define (make-rect p1 p2) (cons p1 p2))
-(define (p1-rect r) (car r))
-(define (p2-rect r) (cdr r))
+;(define (square x) (* x x))
+;(define (distance p1 p2) 
+;  (sqrt (+ (square (- (x-point p1) (x-point p2)))
+;           (square (- (y-point p1) (y-point p2))))))
+
+(define make-rect cons)
+(define p1-rect car)
+(define p2-rect cdr)
 
 (define (length r) (- (y-point (p2-rect r)) (y-point (p1-rect r))))
 (define (width r) (- (x-point (p2-rect r)) (x-point (p1-rect r))))
