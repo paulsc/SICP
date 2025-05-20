@@ -23,8 +23,12 @@
      (x-point start) (y-point start)
      (x-point end) (y-point end))))
 
-(define p1 (make-point 2 3))
-(define p2 (make-point 4 5))
-(define s1 (make-segment p1 p2))
-(print-segment s1)
-(print-point (midpoint-segment s1))
+;(define p1 (make-point 2 3))
+;(define p2 (make-point 4 5))
+;(define s1 (make-segment p1 p2))
+;(print-segment s1)                  ; (2,3) -> (4,5)
+;(print-point (midpoint-segment s1)) ; (3, 4)
+
+
+(provide make-point x-point y-point average print-point)
+(provide make-segment start-segment end-segment midpoint-segment print-segment)
