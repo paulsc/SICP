@@ -14,8 +14,8 @@
 ; '((1 2) (3 4))
 
 (define (deep-reverse l)
-  (if (not (pair? l))
-      l
-      (map deep-reverse (reverse l))))
+  (if (pair? l)
+      (map deep-reverse (reverse l))
+      l))
 
 (deep-reverse x)
