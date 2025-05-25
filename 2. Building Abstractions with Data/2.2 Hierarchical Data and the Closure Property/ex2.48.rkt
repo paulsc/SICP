@@ -1,7 +1,7 @@
 #lang racket
 
-(define make-segment cons)
+(define make-segment list)
 (define start-segment car)
-(define end-segment cdr)
+(define end-segment cadr)
 
 (provide make-segment start-segment end-segment)

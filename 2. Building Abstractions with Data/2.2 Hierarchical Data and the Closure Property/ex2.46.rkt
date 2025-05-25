@@ -1,8 +1,8 @@
 #lang racket
 
-(define make-vect cons)
+(define make-vect list)
 (define xcor-vect car)
-(define ycor-vect cdr)
+(define ycor-vect cadr)
 
 (define (add-vect v1 v2)
   (make-vect (+ (xcor-vect v1) (xcor-vect v2))
@@ -17,8 +17,8 @@
 
 (define v1 (make-vect 1 2))
 (define v2 (make-vect 3 4))
-(add-vect v1 v2)
-(sub-vect v2 v1)
-(scale-vect v1 2)
+;(add-vect v1 v2)
+;(sub-vect v2 v1)
+;(scale-vect v1 2)
 
 (provide make-vect xcor-vect ycor-vect add-vect sub-vect scale-vect)
