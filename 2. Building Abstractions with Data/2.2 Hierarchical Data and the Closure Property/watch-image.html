@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Auto-Refreshing Image Viewer</title>
+  <style>
+    body {
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      border: 2px solid #888;
+    }
+  </style>
+</head>
+<body>
+  <img id="watchedImage" src="image.png" alt="Watching image..." />
+  <script>
+    const img = document.getElementById("watchedImage");
+    setInterval(() => {
+      // Force refresh by appending a timestamp to bust cache
+      img.src = `image.png?cachebust=${new Date().getTime()}`;
+    }, 1000); // Refresh every 1000 milliseconds (1 second)
+  </script>
+</body>
+</html>
+

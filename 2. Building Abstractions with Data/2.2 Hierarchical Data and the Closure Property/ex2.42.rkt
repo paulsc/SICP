@@ -81,13 +81,8 @@
          (flatmap
           (lambda (rest-of-queens)
             (map (lambda (new-row)
-                   (adjoin-position 
-                    new-row 
-                    k 
-                    rest-of-queens))
-                 (enumerate-interval 
-                  1 
-                  board-size)))
+                   (adjoin-position new-row k rest-of-queens))
+                 (enumerate-interval 1 board-size)))
           (queen-cols (- k 1))))))
   (queen-cols board-size))
 
@@ -95,10 +90,10 @@
 ; '((2 4 1 3) (3 1 4 2))
 
 
-; two questions; 
+; some questions; 
 ; - why does k get passed around so much ? It could just be 
 ;   deducted everytime that k = length(positions). Maybe it's to not recompute
-;   every time. Or maybe it's for clarity / versatility. (safe?) can then be
+;   every time. Or maybe it's for clarity / versatility. safe? can then be
 ;   used in a scenario where we're not checking the last column of the board
 ;   but a different column. It's also more readable that way.
 ; - why does k get passed to adjoin-position, it is really not needed there
