@@ -6,17 +6,12 @@
        (variable? v2)
        (eq? v1 v2)))
 
-(define (sum? x) (and (pair? x) (eq? (car x) '+)))
-(define (addend s) (cadr s))
-(define (augend s) (caddr s))
-
-(define (product? x) (and (pair? x) (eq? (car x) '*)))
-(define (multiplier p) (cadr p))
-(define (multiplicand p) (caddr p))
-
 (define (=number? exp num)
   (and (number? exp) (= exp num)))
 
+(define (sum? x) (and (pair? x) (eq? (car x) '+)))
+(define (addend s) (cadr s))
+(define (augend s) (caddr s))
 (define (make-sum a1 a2)
   (cond ((=number? a1 0) a2)
         ((=number? a2 0) a1)
@@ -24,6 +19,9 @@
          (+ a1 a2))
         (else (list '+ a1 a2))))
 
+(define (product? x) (and (pair? x) (eq? (car x) '*)))
+(define (multiplier p) (cadr p))
+(define (multiplicand p) (caddr p))
 (define (make-product m1 m2)
   (cond ((or (=number? m1 0) 
              (=number? m2 0)) 
@@ -67,7 +65,9 @@
            (multiplicand exp))))
         ((exponentiation? exp)
          (make-product
-           (make-product (exponent exp) (make-exponentiation (base exp) (- (exponent exp) 1)))
+           (make-product (exponent exp) 
+                         (make-exponentiation (base exp) 
+                                              (- (exponent exp) 1)))
            (deriv (base exp) var)))
         (else (error "unknown expression 
                       type: DERIV" exp))))
@@ -77,3 +77,6 @@
 (deriv '(** x 3) 'x)
 |#
 
+
+(provide deriv exponentiation? make-exponentiation base exponent)
+(provide variable? same-variable? =number?)
