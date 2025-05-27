@@ -9,6 +9,12 @@
       (caddr s)
       (make-sum (addend (cdr s)) (augend (cdr s)))))
 
+; cleaner solution from https://mk12.github.io/sicp/exercise/2/3.html
+; (define (augend sum)
+;   (accumulate make-sum 0 (cddr sum)))
+
+
+
 ; (define exp1 '(+ 1 2))
 ; (addend exp1)
 ; (augend exp1)
@@ -71,9 +77,15 @@
 #|
 (deriv '(* (* x y) (+ x 3)) 'x)
 (deriv '(** x 3) 'x)
+(deriv '(+ (* 3 x) y) 'x)
+(deriv '(* (* 3 x) y) 'x)
+(deriv '(* (* 3 x) (* 4 x)) 'x)
+(deriv '(* (* 0 x) (* 4 x)) 'x)
+(deriv '(+ (* 3 x) (* 4 x)) 'x)
+(deriv 'y 'x)
+(deriv '(* 3 x) 'x)
 |#
 
-; (deriv '(* x y) 'x)
 ; 
 ; (deriv '(* x y (+ x 3)) 'x) 
 ; '(+ (* x y) (* y (+ x 3)))
