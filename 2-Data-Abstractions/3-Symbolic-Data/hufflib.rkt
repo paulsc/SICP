@@ -66,5 +66,33 @@
                     (cadr pair))  ; frequency
          (make-leaf-set (cdr pairs))))))
 
+(define (encode-symbol symbol tree)
+  (cond ((leaf? tree) '())
+    ((memq symbol (symbols (left-branch tree)))
+      (cons '0 (encode-symbol symbol (left-branch tree))))
+    ((memq symbol (symbols (right-branch tree)))
+      (cons '1 (encode-symbol symbol (right-branch tree))))
+    (else
+      (error "Symbol not in tree: ~a" symbol))))
+
+(define (encode message tree)
+  (if (null? message)
+      '()
+      (append 
+       (encode-symbol (car message) tree)
+       (encode (cdr message) tree))))
+
+(define (successive-merge leaf-set)
+  (if (= (length leaf-set) 1)
+      (car leaf-set)
+      (successive-merge 
+        (adjoin-set (make-code-tree (car leaf-set) (cadr leaf-set))
+                    (cddr leaf-set)))))
+
+(define (generate-huffman-tree pairs)
+  (successive-merge 
+   (make-leaf-set pairs)))
+
 (provide make-leaf-set decode make-leaf leaf? symbol-leaf weight-leaf 
-  make-code-tree left-branch right-branch symbols weight)
+  make-code-tree left-branch right-branch symbols weight adjoin-set
+  generate-huffman-tree encode encode-symbol)
