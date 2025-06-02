@@ -114,4 +114,3 @@
            (deriv (base exp) var)))
         (else (error "unknown expression 
                       type: DERIV" exp))))
-

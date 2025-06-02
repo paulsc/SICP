@@ -80,3 +80,4 @@
 
 (provide deriv exponentiation? make-exponentiation base exponent)
 (provide variable? same-variable? =number?)
+(provide addend augend multiplicand multiplier make-sum make-product)
